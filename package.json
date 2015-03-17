@@ -4,7 +4,7 @@
   "description": "A bootstrap datetime picker component for React.js",
   "repository": {
     "type": "git",
-    "url": "http://github.com/quri/react-bootstrap-datetimepicker"
+    "url": "http://github.com/stolbov/react-bootstrap-datetimepicker"
   },
   "main": "./lib/DateTimeField.js",
   "scripts": {
