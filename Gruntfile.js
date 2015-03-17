@@ -9,7 +9,7 @@ module.exports = function (grunt) {
     //     files: [{
     //       expand: true,
     //       cwd: '.',
-    //       src: ['transpiled/**/*.js'],
+    //       src: ['lib/**/*.js'],
     //       dest: 'cjs/'
     //     }]
     //   },
@@ -19,7 +19,7 @@ module.exports = function (grunt) {
     //     files: [{
     //       expand: true,
     //       cwd: '.',
-    //       src: ['transpiled/**/*.js'],
+    //       src: ['lib/**/*.js'],
     //       dest: 'amd/'
     //     }]
     //   }
@@ -32,7 +32,7 @@ module.exports = function (grunt) {
     //     },
     //     files: [{
     //       expand: true,
-    //       cwd: 'cjs/transpiled',
+    //       cwd: 'cjs/lib',
     //       src: ['*.js'],
     //       dest: 'cjs'
     //     }]
@@ -43,7 +43,7 @@ module.exports = function (grunt) {
     //     },
     //     files: [{
     //       expand: true,
-    //       cwd: 'amd/transpiled',
+    //       cwd: 'amd/lib',
     //       src: ['*.js'],
     //       dest: 'amd'
     //     }]
@@ -53,7 +53,7 @@ module.exports = function (grunt) {
     amdwrap: {
       src: {
         expand: true,
-        cwd: 'transpiled/',
+        cwd: 'lib/',
         src: ['**/*.js'],
         dest: 'amd/'
       }
@@ -74,7 +74,7 @@ module.exports = function (grunt) {
         files: [
           {
             expand: true,
-            cwd: 'transpiled/',
+            cwd: 'lib/',
             src: ['**/*.js'],
             dest: 'cjs/'
           },
@@ -100,7 +100,7 @@ module.exports = function (grunt) {
             expand: true,
             cwd: 'src',
             src: ['**/*.*'],
-            dest: 'transpiled',
+            dest: 'lib',
             ext: '.js'
           }
         ]
@@ -119,7 +119,7 @@ module.exports = function (grunt) {
     },
 
     clean: {
-      transpiled: ['transpiled'],
+      lib: ['lib'],
       jsx: ['src/*.jsx'],
       cjs: ['cjs'],
       amd: ['amd'],
@@ -213,7 +213,7 @@ module.exports = function (grunt) {
     'browserify:test',
     // 'requirejs:dev',
     // 'uglify:build',
-    'clean:transpiled'
+    'clean:lib'
   ]);
 
   grunt.registerTask('default', ['build']);
