@@ -8,7 +8,7 @@ DateTimePickerHours = require('./DateTimePickerHours');
 
 Glyphicon = require('react-bootstrap').Glyphicon;
 
-DateTimePickerTime = React.createClass({
+DateTimePickerTime = React.createClass({displayName: "DateTimePickerTime",
   propTypes: {
     setSelectedHour: React.PropTypes.func.isRequired,
     setSelectedMinute: React.PropTypes.func.isRequired,
@@ -38,9 +38,9 @@ DateTimePickerTime = React.createClass({
   },
   renderMinutes: function() {
     if (this.state.minutesDisplayed) {
-      return (<DateTimePickerMinutes
-            setSelectedMinute={this.props.setSelectedMinute}
-       />
+      return (React.createElement(DateTimePickerMinutes, {
+            setSelectedMinute: this.props.setSelectedMinute}
+       )
        );
     } else {
       return null;
@@ -48,9 +48,9 @@ DateTimePickerTime = React.createClass({
   },
   renderHours: function() {
     if (this.state.hoursDisplayed) {
-      return (<DateTimePickerHours
-            setSelectedHour={this.props.setSelectedHour}
-      />
+      return (React.createElement(DateTimePickerHours, {
+            setSelectedHour: this.props.setSelectedHour}
+      )
       );
     } else {
       return null;
@@ -59,43 +59,37 @@ DateTimePickerTime = React.createClass({
   renderPicker: function() {
     if (!this.state.minutesDisplayed && !this.state.hoursDisplayed) {
       return (
-      <div className="timepicker-picker">
-        <table className="table-condensed">
-          <tbody>
-            <tr>
-              <td><a className="btn" onClick={this.props.addHour}><Glyphicon glyph="chevron-up" /></a></td>
+      React.createElement("div", {className: "timepicker-picker"}, 
+        React.createElement("table", {className: "table-condensed"}, 
+          React.createElement("tbody", null, 
+            React.createElement("tr", null, 
+              React.createElement("td", null, React.createElement("a", {className: "btn", onClick: this.props.addHour}, React.createElement(Glyphicon, {glyph: "chevron-up"}))), 
 
-              <td className="separator"></td>
+              React.createElement("td", {className: "separator"}), 
 
-              <td><a className="btn" onClick={this.props.addMinute}><Glyphicon glyph="chevron-up" /></a></td>
+              React.createElement("td", null, React.createElement("a", {className: "btn", onClick: this.props.addMinute}, React.createElement(Glyphicon, {glyph: "chevron-up"})))
+            ), 
 
-              <td className="separator"></td>
-            </tr>
+            React.createElement("tr", null, 
+              React.createElement("td", null, React.createElement("span", {className: "timepicker-hour", onClick: this.showHours}, this.props.selectedDate.format('HH'))), 
 
-            <tr>
-              <td><span className="timepicker-hour" onClick={this.showHours}>{this.props.selectedDate.format('h')}</span></td>
+              React.createElement("td", {className: "separator"}, ":"), 
 
-              <td className="separator">:</td>
+              React.createElement("td", null, React.createElement("span", {className: "timepicker-minute", onClick: this.showMinutes}, this.props.selectedDate.format('mm'))) 
 
-              <td><span className="timepicker-minute" onClick={this.showMinutes}>{this.props.selectedDate.format('mm')}</span></td>
+             )
+            ), 
 
-              <td className="separator"></td>
+            React.createElement("tr", null, 
+              React.createElement("td", null, React.createElement("a", {className: "btn", onClick: this.props.subtractHour}, React.createElement(Glyphicon, {glyph: "chevron-down"}))), 
 
-              <td><button className="btn btn-primary" onClick={this.props.togglePeriod} type="button">{this.props.selectedDate.format('A')}</button></td>
-            </tr>
+              React.createElement("td", {className: "separator"}), 
 
-            <tr>
-              <td><a className="btn" onClick={this.props.subtractHour}><Glyphicon glyph="chevron-down" /></a></td>
+              React.createElement("td", null, React.createElement("a", {className: "btn", onClick: this.props.subtractMinute}, React.createElement(Glyphicon, {glyph: "chevron-down"})))
 
-              <td className="separator"></td>
-
-              <td><a className="btn" onClick={this.props.subtractMinute}><Glyphicon glyph="chevron-down" /></a></td>
-
-              <td className="separator"></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+            )
+          )
+        )
       );
     } else {
       return '';
@@ -103,13 +97,13 @@ DateTimePickerTime = React.createClass({
   },
   render: function() {
     return (
-        <div className="timepicker">
-          {this.renderPicker()}
+        React.createElement("div", {className: "timepicker"}, 
+          this.renderPicker(), 
 
-          {this.renderHours()}
+          this.renderHours(), 
 
-          {this.renderMinutes()}
-        </div>
+          this.renderMinutes()
+        )
     );
   }
 });
