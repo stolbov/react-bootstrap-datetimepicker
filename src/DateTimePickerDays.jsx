@@ -85,19 +85,19 @@ DateTimePickerDays = React.createClass({
             </tr>
 
             <tr>
-              <th className="dow">Su</th>
+              <th className="dow">Пн</th>
 
-              <th className="dow">Mo</th>
+              <th className="dow">Вт</th>
 
-              <th className="dow">Tu</th>
+              <th className="dow">Ср</th>
 
-              <th className="dow">We</th>
+              <th className="dow">Чт</th>
 
-              <th className="dow">Th</th>
+              <th className="dow">Пт</th>
 
-              <th className="dow">Fr</th>
+              <th className="dow">Сб</th>
 
-              <th className="dow">Sa</th>
+              <th className="dow">Вс</th>
             </tr>
           </thead>
 
